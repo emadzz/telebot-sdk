@@ -8,9 +8,6 @@
 
 namespace Telebot;
 
-
-use namespacetest\model\User;
-
 class Message {
 
     /**
