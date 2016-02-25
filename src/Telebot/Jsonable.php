@@ -55,7 +55,7 @@ trait Jsonable {
      *
      * @return mixed Object of the created class
      */
-    protected static function instantiate($class, $args = []) {
+    public static function instantiate($class, $args = []) {
         // Prepare a reflection class with the passed `$class`
         $reflection_class = new \ReflectionClass($class);
 
