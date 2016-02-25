@@ -23,16 +23,48 @@ class BotApi {
      * @throws \JsonMapper_Exception
      */
     public function getMe() {
-        $response = $this->performMethod('getMe');
-
-        $botInfo = JsonMapper::getInstance()->map(
-            json_decode($response), Jsonable::instantiate(Response::class, [User::class])
-        );
+        $botInfo = $this->performMethod('getMe', User::class);
 
         return $botInfo;
     }
 
-    protected function performMethod($method, $args = []) {
+    /**
+     * @param $chat_id
+     * @param $text
+     * @param null $parse_mode
+     * @param null $disable_web_page_preview
+     * @param null $reply_to_message_id
+     * @param null $reply_markup
+     *
+     * @return Response
+     */
+    public function sendMessage($chat_id, $text, $parse_mode = null,
+                                $disable_web_page_preview = null,
+                                $reply_to_message_id = null,
+                                $reply_markup = null) {
+        $params = [
+            'chat_id' => $chat_id,
+            'text' => $text,
+            'parse_mode' => $parse_mode,
+            'disable_web_page_preview' => $disable_web_page_preview,
+            'reply_to_message_id' => $reply_to_message_id,
+            'reply_markup' => $reply_markup,
+        ];
+
+        $update = $this->performMethod('sendMessage', Message::class, $params);
+
+        return $update;
+    }
+
+    /**
+     * @param $method
+     * @param $resultClass
+     * @param array $args
+     *
+     * @return Response
+     * @throws \JsonMapper_Exception
+     */
+    protected function performMethod($method, $resultClass, $args = []) {
         $end_point = $this->api_url . '/' . $method;
 
         // Setting a custom stream context,
@@ -47,7 +79,12 @@ class BotApi {
         ]);
 
         // Call telegram api, and return the response
-        $response = file_get_contents($end_point, false, $context);
+        $responseText = file_get_contents($end_point, false, $context);
+
+        $response = JsonMapper::getInstance()->map(
+            json_decode($responseText),
+            Jsonable::instantiate(Response::class, [$resultClass])
+        );
 
         return $response;
     }
