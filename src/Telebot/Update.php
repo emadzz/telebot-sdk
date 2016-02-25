@@ -28,11 +28,11 @@ class Update {
     /**
      * @var InlineQuery
      */
-    protected $inline_query;
+    public $inline_query;
 
     /**
      * @var ChosenInlineResult
      */
-    protected $chosen_inline_result;
+    public $chosen_inline_result;
 
 }

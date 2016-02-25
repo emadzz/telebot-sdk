@@ -21,16 +21,16 @@ class User {
      * @required
      * @var string
      */
-    protected $first_name;
+    public $first_name;
 
     /**
      * @var string
      */
-    protected $last_name;
+    public $last_name;
 
     /**
      * @var string
      */
-    protected $username;
+    public $username;
 
 }

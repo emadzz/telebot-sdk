@@ -15,32 +15,32 @@ class Audio {
      * @required
      * @var string
      */
-    protected $file_id;
+    public $file_id;
 
     /**
      * @required
      * @var integer
      */
-    protected $duration;
+    public $duration;
 
     /**
      * @var string
      */
-    protected $performer;
+    public $performer;
 
     /**
      * @var string
      */
-    protected $title;
+    public $title;
 
     /**
      * @var string
      */
-    protected $mime_type;
+    public $mime_type;
 
     /**
      * @var integer
      */
-    protected $file_size;
+    public $file_size;
 
 }

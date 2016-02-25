@@ -15,23 +15,23 @@ class PhotoSize {
      * @required
      * @var string
      */
-    protected $file_id;
+    public $file_id;
 
     /**
      * @required
      * @var integer
      */
-    protected $width;
+    public $width;
 
     /**
      * @required
      * @var integer
      */
-    protected $height;
+    public $height;
 
     /**
      * @var integer
      */
-    protected $file_size;
+    public $file_size;
 
 }

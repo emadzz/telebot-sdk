@@ -15,12 +15,12 @@ class Location {
      * @required
      * @var float
      */
-    protected $longitude;
+    public $longitude;
 
     /**
      * @required
      * @var float
      */
-    protected $latitude;
+    public $latitude;
 
 }

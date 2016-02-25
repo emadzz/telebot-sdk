@@ -15,26 +15,26 @@ class Document {
      * @required
      * @var string
      */
-    protected $file_id;
+    public $file_id;
 
     /**
      * @var PhotoSize
      */
-    protected $thumb;
+    public $thumb;
 
     /**
      * @var string
      */
-    protected $file_name;
+    public $file_name;
 
     /**
      * @var string
      */
-    protected $mime_type;
+    public $mime_type;
 
     /**
      * @var integer
      */
-    protected $file_size;
+    public $file_size;
 
 }

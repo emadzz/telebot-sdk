@@ -15,22 +15,22 @@ class Contact {
      * @required
      * @var string
      */
-    protected $phone_number;
+    public $phone_number;
 
     /**
      * @required
      * @var string
      */
-    protected $first_name;
+    public $first_name;
 
     /**
      * @var string
      */
-    protected $list_name;
+    public $list_name;
 
     /**
      * @var integer
      */
-    protected $user_id;
+    public $user_id;
 
 }
