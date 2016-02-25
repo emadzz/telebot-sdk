@@ -102,8 +102,27 @@ class UserTest extends PHPUnit_Framework_TestCase {
                 'migrate_to_chat_id' => rand(10, 999),
                 'migrate_from_chat_id' => rand(10, 999),
             ],
-            'inline_query' => 'inline',
-            'chosen_inline_query' => 'chosen',
+            'inline_query' => [
+                'id' => 13,
+                'from' => [
+                    'id' => 14,
+                    'first_name' => 'string',
+                    'last_name' => 'string',
+                    'username' => 'string',
+                ],
+                'query' => 'string',
+                'offset' => 'string',
+            ],
+            'chosen_inline_result' => [
+                'result_id' => 15,
+                'from' => [
+                    'id' => 16,
+                    'first_name' => 'string',
+                    'last_name' => 'string',
+                    'username' => 'string',
+                ],
+                'query' => 'string',
+            ],
         ]));
     }
 
