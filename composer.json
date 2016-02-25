@@ -15,7 +15,8 @@
     }
   ],
   "require": {
-    "php": ">=5.0"
+    "php": ">=5.0",
+    "netresearch/jsonmapper": "~0.10.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.1"
