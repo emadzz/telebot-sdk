@@ -79,6 +79,30 @@ class BotApi {
     }
 
     /**
+     * @param integer $chat_id
+     * @param InputFile|string $photo
+     * @param string $caption
+     * @param string $reply_to_message_id
+     * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
+     *
+     * @return Response
+     */
+    public function sendPhoto($chat_id, $photo, $caption = null,
+                              $reply_to_message_id = null, $reply_markup = null) {
+        $params = [
+            'chat_id' => $chat_id,
+            'photo' => $photo,
+            'caption' => $caption,
+            'reply_to_message_id' => $reply_to_message_id,
+            'reply_markup' => $reply_markup,
+        ];
+
+        $update = $this->performMethod('sendPhoto', Message::class, $params);
+
+        return $update;
+    }
+
+    /**
      * @param $method
      * @param $resultClass
      * @param array $args
