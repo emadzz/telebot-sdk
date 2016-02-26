@@ -122,17 +122,38 @@ class BotApi {
         return $response;
     }
 
+    /**
+     * @param array $args
+     * @param string $multipart_boundary
+     *
+     * @return string
+     * @throws Telebot_InvalidArgumentException
+     */
     protected static function renderFormDataContent($args, $multipart_boundary) {
-        $content = "";
+        $content = '';
 
         foreach ($args as $name => $value) {
             if ($value == null) {
                 continue;
             }
 
-            $content .= "--" . $multipart_boundary . "\r\n" .
-                "Content-Disposition: form-data; name=\"" . $name . "\"\r\n" .
-                "\r\n" . $value . "\r\n";
+            $content .= '--' . $multipart_boundary . "\r\n";
+            $content .= 'Content-Disposition: form-data; name="' . $name . '"';
+
+            if ($value instanceof InputFile) {
+                $content .= '; filename="' . $value->getFileName() . '"' . "\r\n";
+                $content .= 'Content-Type: ' . $value->getMimeType();
+                $value = $value->getFileContent();
+            } else if (!is_int($value) && !is_string($value)
+                && !is_float($value) && !is_bool($value)
+            ) {
+                throw new Telebot_InvalidArgumentException(
+                    'Argument must be a `string`, `integer`, `float`, `boolean` or'
+                    . ' of type`' . InputFile::class . '` only.'
+                );
+            }
+
+            $content .= "\r\n\r\n" . $value . "\r\n";
         }
 
         $content .= "--" . $multipart_boundary . "--\r\n";
