@@ -1,6 +1,9 @@
 <?php
 use Telebot\BotApi;
 use Telebot\Message;
+use Telebot\ReplyKeyboardHide;
+use Telebot\ReplyKeyboardMarkup;
+use Telebot\ReplyMarkup;
 use Telebot\Response;
 use Telebot\Update;
 use Telebot\User;
@@ -31,7 +34,7 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf(Response::class, $botInfo);
 
         // Check if response is ok
-        $this->assertTrue($botInfo->ok);
+        $this->assertTrue($botInfo->ok, $botInfo->description);
 
         // Check if result is `User`
         $this->assertInstanceOf(User::class, $botInfo->getResult());
@@ -47,7 +50,51 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf(Response::class, $botInfo);
 
         // Check if response is ok
-        $this->assertTrue($botInfo->ok);
+        $this->assertTrue($botInfo->ok, $botInfo->description);
+
+        // Check if result is `Message`
+        $this->assertInstanceOf(Message::class, $botInfo->getResult());
+    }
+
+    public function testSendMessage2() {
+        $chatId = getTestVar('chatId');
+        $text = 'http://telegram.com';
+
+        $reply_markup = ReplyMarkup::ReplyKeyboardMarkup(
+            new ReplyKeyboardMarkup([['Button 1'], ['Btn 2', 'Btn 3']], true)
+        );
+
+        $botInfo = $this->bot->sendMessage(
+            $chatId, $text, null, true, null, $reply_markup
+        );
+
+        // Check if a correct response is returned
+        $this->assertInstanceOf(Response::class, $botInfo);
+
+        // Check if response is ok
+        $this->assertTrue($botInfo->ok, $botInfo->description);
+
+        // Check if result is `Message`
+        $this->assertInstanceOf(Message::class, $botInfo->getResult());
+    }
+
+    public function testSendMessage3() {
+        $chatId = getTestVar('chatId');
+        $text = 'Another *test* _message_';
+
+        $reply_markup = ReplyMarkup::ReplyKeyboardHide(
+            new ReplyKeyboardHide()
+        );
+
+        $botInfo = $this->bot->sendMessage(
+            $chatId, $text, BotApi::PARSE_MODE_MARKDOWN, null, null, $reply_markup
+        );
+
+        // Check if a correct response is returned
+        $this->assertInstanceOf(Response::class, $botInfo);
+
+        // Check if response is ok
+        $this->assertTrue($botInfo->ok, $botInfo->description);
 
         // Check if result is `Message`
         $this->assertInstanceOf(Message::class, $botInfo->getResult());
@@ -64,7 +111,7 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf(Response::class, $botInfo);
 
         // Check if response is ok
-        $this->assertTrue($botInfo->ok);
+        $this->assertTrue($botInfo->ok, $botInfo->description);
 
         // Check if result is `Message`
         $this->assertInstanceOf(Message::class, $botInfo->getResult());
