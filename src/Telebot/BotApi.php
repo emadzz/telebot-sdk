@@ -12,6 +12,9 @@ use Telebot\JsonMapper\JsonMapper;
 
 class BotApi {
 
+    const PARSE_MODE_MARKDOWN = "Markdown";
+    const PARSE_MODE_HTML = "HTML";
+
     protected $api_url = "https://api.telegram.org/bot{{token}}";
 
     public function __construct($token) {
