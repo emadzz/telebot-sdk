@@ -6,10 +6,10 @@
  * Time: 3:25 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
-use Telebot\JsonMapper\JsonMapper;
+use TelebotSDK\JsonMapper\JsonMapper;
 
 trait Jsonable {
 

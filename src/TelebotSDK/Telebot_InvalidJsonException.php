@@ -6,12 +6,12 @@
  * Time: 4:53 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
 /**
  * Class Telebot_InvalidJsonException
- * @package Telebot
+ * @package TelebotSDK
  */
 class Telebot_InvalidJsonException extends \Exception {
 

@@ -6,7 +6,7 @@
  * Time: 6:02 PM
  */
 
-namespace Telebot\JsonMapper;
+namespace TelebotSDK\JsonMapper;
 
 
 class JsonMapper extends \JsonMapper {

@@ -1,13 +1,14 @@
 <?php
-use Telebot\BotApi;
-use Telebot\InputFile;
-use Telebot\Message;
-use Telebot\ReplyKeyboardHide;
-use Telebot\ReplyKeyboardMarkup;
-use Telebot\ReplyMarkup;
-use Telebot\Response;
-use Telebot\Update;
-use Telebot\User;
+
+use TelebotSDK\BotApi;
+use TelebotSDK\InputFile;
+use TelebotSDK\Message;
+use TelebotSDK\ReplyKeyboardHide;
+use TelebotSDK\ReplyKeyboardMarkup;
+use TelebotSDK\ReplyMarkup;
+use TelebotSDK\Response;
+use TelebotSDK\Update;
+use TelebotSDK\User;
 
 require_once __DIR__ . '/getTestVar.func.php';
 

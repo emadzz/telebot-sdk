@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: Emad Omar <emad2030@gmail.com>
  * Date: 2/25/2016
- * Time: 2:09 PM
+ * Time: 2:08 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
-class PhotoSize {
+class Document {
 
     /**
      * @required
@@ -18,16 +18,19 @@ class PhotoSize {
     public $file_id;
 
     /**
-     * @required
-     * @var integer
+     * @var PhotoSize
      */
-    public $width;
+    public $thumb;
 
     /**
-     * @required
-     * @var integer
+     * @var string
      */
-    public $height;
+    public $file_name;
+
+    /**
+     * @var string
+     */
+    public $mime_type;
 
     /**
      * @var integer

@@ -6,7 +6,7 @@
  * Time: 9:14 AM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
 class InputFile {

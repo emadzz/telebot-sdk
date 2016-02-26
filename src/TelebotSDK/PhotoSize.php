@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: Emad Omar <emad2030@gmail.com>
  * Date: 2/25/2016
- * Time: 8:11 PM
+ * Time: 2:09 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
-class Video {
+class PhotoSize {
 
     /**
      * @required
@@ -28,22 +28,6 @@ class Video {
      * @var integer
      */
     public $height;
-
-    /**
-     * @required
-     * @var integer
-     */
-    public $duration;
-
-    /**
-     * @var PhotoSize
-     */
-    public $thumb;
-
-    /**
-     * @var string
-     */
-    public $mime_type;
 
     /**
      * @var integer

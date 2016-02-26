@@ -1,6 +1,6 @@
 {
-  "name": "emadomar/telebot",
-  "description": "An unofficial SDK for Telegram Bot API.",
+  "name": "emadomar/telebot-sdk",
+  "description": "An unofficial Php SDK for Telegram Bot API.",
   "type": "library",
   "keywords": [
     "telebot",
@@ -23,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Telebot\\": "src/Telebot"
+      "TelebotSDK\\": "src/TelebotSDK"
     }
   }
 }

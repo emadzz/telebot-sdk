@@ -1,5 +1,5 @@
 <?php
-use Telebot\Update;
+use TelebotSDK\Update;
 
 /**
  * Created by PhpStorm.

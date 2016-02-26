@@ -3,30 +3,34 @@
  * Created by PhpStorm.
  * User: Emad Omar <emad2030@gmail.com>
  * Date: 2/25/2016
- * Time: 10:26 PM
+ * Time: 2:06 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
-class ChosenInlineResult {
-
-    /**
-     * @required
-     * @var string
-     */
-    public $result_id;
-
-    /**
-     * @required
-     * @var User
-     */
-    public $from;
+class Voice {
 
     /**
      * @required
      * @var string
      */
-    public $query;
+    public $file_id;
+
+    /**
+     * @required
+     * @var integer
+     */
+    public $duration;
+
+    /**
+     * @var string
+     */
+    public $mime_type;
+
+    /**
+     * @var integer
+     */
+    public $file_size;
 
 }

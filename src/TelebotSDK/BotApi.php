@@ -6,9 +6,9 @@
  * Time: 9:13 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
-use Telebot\JsonMapper\JsonMapper;
+use TelebotSDK\JsonMapper\JsonMapper;
 
 class BotApi {
 

@@ -6,31 +6,31 @@
  * Time: 2:06 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
-class Voice {
+class Contact {
 
     /**
      * @required
      * @var string
      */
-    public $file_id;
+    public $phone_number;
 
     /**
      * @required
-     * @var integer
+     * @var string
      */
-    public $duration;
+    public $first_name;
 
     /**
      * @var string
      */
-    public $mime_type;
+    public $list_name;
 
     /**
      * @var integer
      */
-    public $file_size;
+    public $user_id;
 
 }

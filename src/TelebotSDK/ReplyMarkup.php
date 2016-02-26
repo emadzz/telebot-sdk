@@ -6,7 +6,7 @@
  * Time: 7:12 AM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
 class ReplyMarkup {

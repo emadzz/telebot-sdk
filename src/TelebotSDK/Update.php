@@ -6,7 +6,7 @@
  * Time: 1:43 PM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
 class Update {

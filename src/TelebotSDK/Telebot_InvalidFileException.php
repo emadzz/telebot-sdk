@@ -6,12 +6,12 @@
  * Time: 9:17 AM
  */
 
-namespace Telebot;
+namespace TelebotSDK;
 
 
 /**
  * Class Telebot_InvalidFileException
- * @package Telebot
+ * @package TelebotSDK
  */
 class Telebot_InvalidFileException extends \Exception {
 
