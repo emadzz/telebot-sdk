@@ -89,14 +89,25 @@ class BotApi {
     protected function performMethod($method, $resultClass, $args = []) {
         $end_point = $this->api_url . '/' . $method;
 
+        if (empty($args)) {
+            $content_type = 'Content-type: application/x-www-form-urlencoded';
+            $content = null;
+        } else {
+            $multipart_boundary = uniqid('---Telebot_FromBoundary');
+            $content_type = 'Content-type: multipart/form-data'
+                . '; boundary=' . $multipart_boundary;
+
+            $content = self::renderFormDataContent($args, $multipart_boundary);
+        }
+
         // Setting a custom stream context,
         $context = stream_context_create([
             'http' => [
                 // To ignore http errors and return the response result anyway
                 'ignore_errors' => true,
                 'method' => 'POST',
-                'header' => 'Content-type: application/x-www-form-urlencoded',
-                'content' => http_build_query($args),
+                'header' => $content_type,
+                'content' => $content,
             ],
         ]);
 
@@ -109,6 +120,24 @@ class BotApi {
         );
 
         return $response;
+    }
+
+    protected static function renderFormDataContent($args, $multipart_boundary) {
+        $content = "";
+
+        foreach ($args as $name => $value) {
+            if ($value == null) {
+                continue;
+            }
+
+            $content .= "--" . $multipart_boundary . "\r\n" .
+                "Content-Disposition: form-data; name=\"" . $name . "\"\r\n" .
+                "\r\n" . $value . "\r\n";
+        }
+
+        $content .= "--" . $multipart_boundary . "--\r\n";
+
+        return $content;
     }
 
 }
