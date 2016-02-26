@@ -56,6 +56,18 @@ class BotApi {
         return $update;
     }
 
+    public function forwardMessage($chat_id, $from_chat_id, $message_id) {
+        $params = [
+            'chat_id' => $chat_id,
+            'from_chat_id' => $from_chat_id,
+            'message_id' => $message_id,
+        ];
+
+        $update = $this->performMethod('forwardMessage', Message::class, $params);
+
+        return $update;
+    }
+
     /**
      * @param $method
      * @param $resultClass
