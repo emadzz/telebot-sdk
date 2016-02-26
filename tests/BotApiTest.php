@@ -60,8 +60,8 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
         $chatId = getTestVar('chatId');
         $text = 'http://telegram.com';
 
-        $reply_markup = ReplyMarkup::ReplyKeyboardMarkup(
-            new ReplyKeyboardMarkup([['Button 1'], ['Btn 2', 'Btn 3']], true)
+        $reply_markup = new ReplyKeyboardMarkup(
+            [['Button 1'], ['Btn 2', 'Btn 3']], true
         );
 
         $botInfo = $this->bot->sendMessage(
@@ -82,9 +82,7 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
         $chatId = getTestVar('chatId');
         $text = 'Another *test* _message_';
 
-        $reply_markup = ReplyMarkup::ReplyKeyboardHide(
-            new ReplyKeyboardHide()
-        );
+        $reply_markup = new ReplyKeyboardHide();
 
         $botInfo = $this->bot->sendMessage(
             $chatId, $text, BotApi::PARSE_MODE_MARKDOWN, null, null, $reply_markup

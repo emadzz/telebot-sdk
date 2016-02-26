@@ -37,7 +37,7 @@ class BotApi {
      * @param null $parse_mode
      * @param null $disable_web_page_preview
      * @param null $reply_to_message_id
-     * @param null $reply_markup
+     * @param ReplyKeyboardMarkup|ReplyKeyboardHide|ForceReply $reply_markup
      *
      * @return Response
      */
@@ -51,7 +51,7 @@ class BotApi {
             'parse_mode' => $parse_mode,
             'disable_web_page_preview' => $disable_web_page_preview,
             'reply_to_message_id' => $reply_to_message_id,
-            'reply_markup' => $reply_markup,
+            'reply_markup' => $reply_markup ? ReplyMarkup::encode($reply_markup) : null,
         ];
 
         $update = $this->performMethod('sendMessage', Message::class, $params);
@@ -59,6 +59,13 @@ class BotApi {
         return $update;
     }
 
+    /**
+     * @param $chat_id
+     * @param $from_chat_id
+     * @param $message_id
+     *
+     * @return Response
+     */
     public function forwardMessage($chat_id, $from_chat_id, $message_id) {
         $params = [
             'chat_id' => $chat_id,
