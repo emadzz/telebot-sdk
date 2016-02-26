@@ -117,6 +117,30 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf(Message::class, $botInfo->getResult());
     }
 
+    public function testSendPhotoFile() {
+        $chatId = getTestVar('chatId');
+        $fullPathToPhoto = __DIR__ . '/data-files/photo-001.jpg';
+        $photo = new InputFile();
+
+        $botInfo = $this->bot->sendPhoto($chatId, $photo);
+
+        // Check if a correct response is returned
+        $this->assertInstanceOf(Response::class, $botInfo);
+
+        // Check if response is ok
+        $this->assertTrue($botInfo->ok, $botInfo->description);
+
+        // Check if result is `Message`
+        $this->assertInstanceOf(Message::class, $botInfo->getResult());
+
+        /** @var Message $message */
+        $message = $botInfo->getResult();
+
+        // Check if message has an array of `PhotoSize`
+        // which will ensure that the type of the message is a photo
+        $this->assertInternalType('array', $message->photo);
+    }
+
     protected function tearDown() {
         unset($this->bot);
     }
