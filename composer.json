@@ -1,5 +1,5 @@
 {
-  "name": "EmadOmar/telebot",
+  "name": "emadomar/telebot",
   "description": "An unofficial SDK for Telegram Bot API.",
   "type": "library",
   "keywords": [
