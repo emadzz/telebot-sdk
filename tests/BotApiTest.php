@@ -38,11 +38,27 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testSendMessage() {
-        // My chat id
         $chatId = getTestVar('chatId');
         $text = 'A message';
 
         $botInfo = $this->bot->sendMessage($chatId, $text);
+
+        // Check if a correct response is returned
+        $this->assertInstanceOf(Response::class, $botInfo);
+
+        // Check if response is ok
+        $this->assertTrue($botInfo->ok);
+
+        // Check if result is `Message`
+        $this->assertInstanceOf(Message::class, $botInfo->getResult());
+    }
+
+    public function testForwardMessage() {
+        $chatId = getTestVar('chatId');
+        $fromChatId = $chatId;
+        $messageId = 1;
+
+        $botInfo = $this->bot->forwardMessage($chatId, $fromChatId, $messageId);
 
         // Check if a correct response is returned
         $this->assertInstanceOf(Response::class, $botInfo);
