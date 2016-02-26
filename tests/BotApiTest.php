@@ -1,5 +1,6 @@
 <?php
 use Telebot\BotApi;
+use Telebot\InputFile;
 use Telebot\Message;
 use Telebot\ReplyKeyboardHide;
 use Telebot\ReplyKeyboardMarkup;
@@ -118,7 +119,7 @@ class BotApiTest extends PHPUnit_Framework_TestCase {
     public function testSendPhotoFile() {
         $chatId = getTestVar('chatId');
         $fullPathToPhoto = __DIR__ . '/data-files/photo-001.jpg';
-        $photo = new InputFile();
+        $photo = new InputFile($fullPathToPhoto);
 
         $botInfo = $this->bot->sendPhoto($chatId, $photo);
 
